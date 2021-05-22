@@ -1,5 +1,7 @@
 package lv1
 
+import kotlin.math.sign
+
 
 /*
 *  문제 링크: https://programmers.co.kr/learn/courses/30/lessons/76501
@@ -30,8 +32,8 @@ class Add {
     fun solution(absolutes: IntArray, signs: BooleanArray): Int {
         var result: Int = 0
 
-        for (index in signs.indices) {
-            if (!signs[index]) {
+        for ((index, sign) in signs.withIndex()) {
+            if (!sign) {
                 result -= absolutes[index]
                 continue
             }
@@ -41,10 +43,14 @@ class Add {
 
         return result
     }
+
+    fun solution2(absolutes: IntArray, signs: BooleanArray): Int =
+        absolutes.foldIndexed(0) { idx, acc, num -> acc + if (signs[idx]) num else -num}
 }
 
 fun main() {
     val add = Add()
     val solution = add.solution(intArrayOf(4, 7, 12), booleanArrayOf(true, false, true))
-    println(solution)
+    val solution2 = add.solution2(intArrayOf(4, 7, 12), booleanArrayOf(true, false, true))
+    println(solution2)
 }
