@@ -25,12 +25,8 @@ import kotlin.math.sign
 *
 * */
 class Add {
-    /*
-    *   signs가 true면 양수
-    *   signs가 false면 음수
-    * */
     fun solution(absolutes: IntArray, signs: BooleanArray): Int {
-        var result: Int = 0
+        var result = 0
 
         for ((index, sign) in signs.withIndex()) {
             if (!sign) {
@@ -52,5 +48,6 @@ fun main() {
     val add = Add()
     val solution = add.solution(intArrayOf(4, 7, 12), booleanArrayOf(true, false, true))
     val solution2 = add.solution2(intArrayOf(4, 7, 12), booleanArrayOf(true, false, true))
+    println(solution)
     println(solution2)
 }
